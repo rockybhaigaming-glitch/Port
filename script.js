@@ -1,15 +1,27 @@
-// autoplay video preview on hover
+// portfolio filter
 
-const videos=document.querySelectorAll(".portfolio-card video")
+const buttons=document.querySelectorAll(".filters button")
+const items=document.querySelectorAll(".portfolio-item")
 
-videos.forEach(video=>{
+buttons.forEach(button=>{
 
-video.addEventListener("mouseover",()=>{
-video.play()
+button.addEventListener("click",()=>{
+
+document.querySelector(".active").classList.remove("active")
+button.classList.add("active")
+
+const filter=button.dataset.filter
+
+items.forEach(item=>{
+
+if(filter==="all" || item.classList.contains(filter)){
+item.style.display="block"
+}else{
+item.style.display="none"
+}
+
 })
 
-video.addEventListener("mouseout",()=>{
-video.pause()
 })
 
 })

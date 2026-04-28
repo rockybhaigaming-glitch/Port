@@ -1,27 +1,18 @@
-// portfolio filter
+// 3D tilt effect based on mouse
+document.querySelectorAll('.card-3d').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    let x = e.offsetX;
+    let y = e.offsetY;
+    let centerX = card.offsetWidth / 2;
+    let centerY = card.offsetHeight / 2;
 
-const buttons=document.querySelectorAll(".filters button")
-const items=document.querySelectorAll(".portfolio-item")
+    let rotateX = -(y - centerY) / 10;
+    let rotateY = (x - centerX) / 10;
 
-buttons.forEach(button=>{
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+  });
 
-button.addEventListener("click",()=>{
-
-document.querySelector(".active").classList.remove("active")
-button.classList.add("active")
-
-const filter=button.dataset.filter
-
-items.forEach(item=>{
-
-if(filter==="all" || item.classList.contains(filter)){
-item.style.display="block"
-}else{
-item.style.display="none"
-}
-
-})
-
-})
-
-})
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = `rotateX(0) rotateY(0) scale(1)`;
+  });
+});

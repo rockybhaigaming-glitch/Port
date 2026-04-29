@@ -280,8 +280,11 @@ nav {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.portfolio__card img {
-  transition: 0.5s;
+.portfolio__card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .portfolio__card:hover img {
